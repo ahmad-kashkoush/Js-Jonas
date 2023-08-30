@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', sans-serif;
+}
+body {
+  background: linear-gradient(90deg, #525151 -65%, #000000 100%);
+  /* /* background: rgb(10, 4, 119); */
+  /* background: linear-gradient(
+    90deg,
+    rgba(10, 4, 119, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  ); */
+  color: #eee;
+
+  overflow-x: hidden; */
+}
+.btn {
+  padding: 20px 30px;
+  font-size: 30px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+}
+
+nav .range {
+}
+nav .btn {
+}
+h1 {
+  text-align: center;
+  margin-top: 62px;
+  margin-bottom: 50px;
+}
+.winning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 62px;
+}
+.winning .value {
+  background-color: #eee;
+  width: 10rem;
+  color: #000;
+  padding: 3rem 0rem;
+  font-size: 4rem;
+  position: relative;
+}
+.winning .value::before {
+  content: '';
+  position: absolute;
+  width: 150vw;
+  height: 10px;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-color: #eee;
+  z-index: -1;
+}
+.game-content {
+  display: flex;
+  gap: 40px;
+  justify-content: space-around;
+}
+.game-content .input {
+}
+.game-content .input > input {
+  display: block;
+  width: 250px;
+  height: 118px;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background-color: #333;
+  color: #eee;
+  border: none;
+  border: 6px solid #eee;
+}
+.game-content .input > .check {
+  font-size: 25px;
+  margin-left: 18px;
+}
+.stat {
+}
+.stat p {
+  margin-bottom: 20px;
+}
+.stat .number-stat {
+  margin-bottom: 90px;
+}
