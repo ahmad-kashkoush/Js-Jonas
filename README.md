@@ -6,12 +6,12 @@
 
 # [JS Course By Jonas Schmedtmann](https://www.udemy.com/course/the-complete-javascript-course/)
 
-| [✅]  | 01-Fundamentals-Part-1          |
+| [✅]  |01-Fundamentals-Part-1       |
 | ---- | ------------------------------- |
 | [✅]  | 02-Fundamentals-Part-2          |
 | [✅]  | 03-Developer-Skills             |
 | []   | 04-HTML-CSS                     |
-| [✅]  | 05-Guess-My-[Number]()          |
+| [✅]  | [05-Guess-My](https://github.com/ahmad-kashkoush/Js-Jonas/tree/main/05-Guess-My-Number)         |
 | []   | 06-Modal                        |
 |      | 07-Pig-Game                     |
 |      | 08-Behind-the-Scenes            |
