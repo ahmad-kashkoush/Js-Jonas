@@ -9,7 +9,7 @@ score[1] = document.querySelector('#score--1');
 curr[0] = document.querySelector('#current--0');
 curr[1] = document.querySelector('#current--1');
 const diceImg = document.querySelector('.dice');
-
+diceImg.classList.add('hidden');
 
 // functions
 const changePlayer = function (value, plr) {
@@ -27,11 +27,13 @@ const changePlayer = function (value, plr) {
 const rollDice = function (plr) {
     let dice = Math.trunc(Math.random() * 6 + 1);
     diceImg.src = `dice-${dice}.png`;
+    if (diceImg.classList.contains('hidden'))
+        diceImg.classList.remove('hidden');
     console.log(dice);
     if (dice == 1)
         plr = changePlayer(0, plr);
     else {
-        curr[plr].textContent = dice;
+        curr[plr].textContent = Number(curr[plr].textContent) + dice;
     }
     return plr;
 }
@@ -52,6 +54,7 @@ document.querySelector('.btn--roll').addEventListener('click', () => {
 });
 
 document.querySelector('.btn--new').addEventListener('click', function () {
+    diceImg.classList.add('hidden');
     for (let i = 0; i < curr.length; i++) {
         curr[i].textContent = 0;
         score[i].textContent = 0;
