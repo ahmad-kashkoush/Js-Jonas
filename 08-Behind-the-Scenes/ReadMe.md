@@ -47,3 +47,35 @@
 
    <img src="How-JS-Is-Compiled.png" alt="img" style="zoom:50%;" />                           
 
+---
+
+![](WhatIsInsideExecutionContext.png)
+
+---
+
+## Scopes 🚀
+
+### Global Scope
+
+### Block Scope
+
+1. let, const are block scoped but var isn't
+
+2. var is function scoped , meaning it can be accessed out side if or loop block even if it is declared inside , but this doesn't apply to function
+
+   ```javascript
+   
+   function func(){
+       function func2(){//function scope
+           if(true){// block scope
+               const ahmed="ali";
+               var ali="ahmed";
+           }
+           console.log(ali);// works because var is function scope
+           console.log(ahmed);// doesn't work
+       }
+       console.log(ali);// doesn't work because its functionally scoped
+   }
+   ```
+
+   
