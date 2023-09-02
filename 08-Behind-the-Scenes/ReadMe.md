@@ -59,7 +59,7 @@
 
 ### Block Scope
 
-1. let, const are block scoped but var isn't
+1. let, const, and function Declarations are block scoped but var isn't
 
 2. var is function scoped , meaning it can be accessed out side if or loop block even if it is declared inside , but this doesn't apply to function
 
@@ -78,4 +78,16 @@
    }
    ```
 
-   
+   ---
+
+## Hoisting ✨✨
+
+* Making some types accessed before being declared 
+
+* **HOW** ❓ By Simple scanning the whole code first searching for variable declarations then put them in variable environment object
+
+  ![image-20230901145005085](HoistingVariables.png)
+
+* **What is TDZ** ❓ the place between the beginning of scope and the declaration of the variable for unhoisted types like let, const 🚀, error message is uninitiaized
+
+  
