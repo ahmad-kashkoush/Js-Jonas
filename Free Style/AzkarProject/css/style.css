@@ -71,7 +71,7 @@ body {
   flex-direction: column;
   align-items: end;
   /* justify-content: center; */
-  gap: 30px;
+  gap: 10px;
   position: fixed;
   z-index: 1;
   transition: var(--main-transition);
@@ -105,7 +105,6 @@ a.active {
 }
 .sidebar-collapse {
   min-width: 40px;
-  gap: 10px;
 }
 .sidebar-collapse a {
   display: block;
@@ -121,7 +120,6 @@ a.active {
   .sidebar,
   .sidebar-collapse {
     min-width: 40px;
-    gap: 10px;
   }
   .sidebar a,
   .sidebar-collapse a {
@@ -207,5 +205,9 @@ a.active {
 .piece:hover .counter {
   background-color: var(--identity-color);
   color: var(--bg-alt-color);
+}
+.counter-green {
+  background-color: #005102 !important;
+  color: white !important;
 }
 /* ? End Content */

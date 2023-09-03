@@ -9,17 +9,20 @@ const decCounter = function () {
     const icn = document.createElement('i');
     icn.classList.add('fa-solid');
     icn.classList.add('fa-rocket');
+    // const charIcon = '🏆'
     if (counter.textContent !== icn.textContent) {
         let value = Number(counter.textContent);
         value--;
         if (value !== 0) {
             counter.textContent = value;
         } else {
-
+            if (!counter.classList.contains('counter-green'))
+                counter.classList.add('counter-green');
             counter.textContent = '';
             counter.appendChild(icn);
         }
     }
+
 }
 
 // counter.addEventListener('click', decCounter);

@@ -78,8 +78,6 @@ const {
 console.log(p1, p2);
 ```
 
----
-
 ## ... spread operator😶‍🌫️
 
 #### It works on all **Iterables**:
@@ -132,4 +130,68 @@ const newObj = {
 const newObjCpy = { ...newObj };
 newObjCpy.p1 = [50, 60];
 console.log(newObj.p1, newObjCpy.p1);
+```
+
+## Rest Pattern 💬
+
+#### Destructring On Arrays
+
+```js
+// packets values into array
+const [a, b, , ...arrWithRestPattern] = [1, 2, 3, 4, 5]; // arrWithRestPattern=[allElements after last variable assigned];
+console.log(a, b, ...arrWithRestPattern);
+
+const [pizza, , Risotto, ...allOtherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+//allOtherFood will take all values after third element of the array
+// doesn't contain **skipped** Element
+console.log(pizza, Risotto, allOtherFood);
+```
+
+#### Destructuring On Objects
+
+```js
+// I want to take sat and all others be stored in weekDays
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(weekDays);
+```
+
+### Rest Pattern with Functions
+
+```js
+// [Problem] create a function that accept any number of parameters and sum all of them
+const add = function (...numbers) {
+  // arguments will packed into array called number
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  return sum;
+};
+console.log(add(1, 2));
+console.log(add(1, 2, 3, 4));
+const arr10 = [2, 3, 4, 5, 3, 2];
+console.log(add(1, 2, 3, 4, 5, 5, 5, 242, 23, 4, ...arr10)); // arr10 will be expeanded
+```
+
+## Short Circuting && vs ||🤨
+
+#### It will return **OR ||** 🚀:
+
+    1. first truthy value for
+    2. last **falsy Value** if no truthy💥
+
+```js
+console.log(3 || 'Kashkoush'); // 3
+console.log(0 || NaN || null || undefined); // undefined because it is the last
+```
+
+#### It will return **AND &&**🚀:
+
+    1. first falsy Value if exists
+    2. last truty Value if no falsy
+
+```js
+console.log(0 && 'kashkoush'); //0
+console.log('ahmed' && 'mohamed' && 1 && 'last truty Value'); // last Truthy Value
 ```

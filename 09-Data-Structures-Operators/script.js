@@ -31,30 +31,117 @@ const restaurant = {
         },
     },
 };
-// ! Spread operator
-//  Used to avoid array shallow copy
-const arr = [1, 2, 3];
-const arrCpy = arr;
-arrCpy[0] = 10;// I only need to change arrCpy[0] not arr[0]
-console.log(arr[0], arrCpy[0]);// arr[0] is changed 
-const deepCpy = [...arr];
-deepCpy[2] = 15;
-console.log(deepCpy[2], arr[2]);// only deepCpy is changing
 
-// Joining two arrays
-const mergedArrays = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(mergedArrays);
+// ! ## Short Circuting && vs ||
+// It will return first truthy value for **OR** 🚀, or last **falsy Value**
+console.log(3 || 'Kashkoush');// 3
+console.log(0 || NaN || null || undefined);// undefined because it is the last
+// It will return **first falsy Value** for **AND**🚀 or last **truty Value**
+console.log(0 && 'kashkoush');//0
+console.log('ahmed' && 'mohamed' && 1 && 'last truty Value');// last Truthy Value
 
-// passing arguments to funcitons
-const arrIngredients = ['chicken', 'meat', 'cheese'];
-restaurant.orderPasta(...arrIngredients);
-// Deep Clone for objects and avoid shallow copy 🏆
-const newObj = {
-    p1: [1, 2, 3, 4, 5, [1, 2, 3]]
-};
-const newObjCpy = { ...newObj };
-newObjCpy.p1 = [50, 60];
-console.log(newObj.p1, newObjCpy.p1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // ! ## Rest Pattern
+// // ? Destructring
+// //  #### On Arrays
+// // packets values into array
+// const [a, b, , ...arrWithRestPattern] = [1, 2, 3, 4, 5];// arrWithRestPattern=[allElements after last variable assigned];
+// console.log(a, b, ...arrWithRestPattern);
+
+// const [pizza, , Risotto, ...allOtherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// //allOtherFood will take all values after third element of the array
+// // doesn't contain **skipped** Element
+// console.log(pizza, Risotto, allOtherFood);
+// // #### On Objects
+// // I want to take sat and all others be stored in weekDays
+// const { sat, ...weekDays } = restaurant.openingHours;
+// console.log(weekDays);
+// // ? Functions
+// // [Problem] create a function that accept any number of parameters and sum all of them
+// const add = function (...numbers) {// arguments will packed into array called number
+//     let sum = 0;
+//     for (let i = 0; i < numbers.length; i++)
+//         sum += numbers[i];
+//     return sum;
+
+// }
+// console.log(add(1, 2));
+// console.log(add(1, 2, 3, 4));
+// const arr10 = [2, 3, 4, 5, 3, 2];
+// console.log(add(1, 2, 3, 4, 5, 5, 5, 242, 23, 4, ...arr10));// arr10 will be expeanded
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // ! Spread operator
+// //  Used to avoid array shallow copy
+// const arr = [1, 2, 3];
+// const arrCpy = arr;
+// arrCpy[0] = 10;// I only need to change arrCpy[0] not arr[0]
+// console.log(arr[0], arrCpy[0]);// arr[0] is changed 
+// const deepCpy = [...arr];
+// deepCpy[2] = 15;
+// console.log(deepCpy[2], arr[2]);// only deepCpy is changing
+
+// // Joining two arrays
+// const mergedArrays = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(mergedArrays);
+
+// // passing arguments to funcitons
+// const arrIngredients = ['chicken', 'meat', 'cheese'];
+// restaurant.orderPasta(...arrIngredients);
+// // Deep Clone for objects and avoid shallow copy 🏆
+// const newObj = {
+//     p1: [1, 2, 3, 4, 5, [1, 2, 3]]
+// };
+// const newObjCpy = { ...newObj };
+// newObjCpy.p1 = [50, 60];
+// console.log(newObj.p1, newObjCpy.p1);
 // // ! Array destructing
 // const arr = [2, 3, 4];
 // const [a, b, c] = arr;
