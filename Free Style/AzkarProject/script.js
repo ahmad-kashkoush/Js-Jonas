@@ -33,3 +33,10 @@ themeIcon.addEventListener('click', function () {
     document.querySelector('.page').classList.toggle('bg-white');
     document.querySelector('.page').classList.toggle('bg-black');
 })
+//  side bar collapse
+const collapseIcon = document.querySelector('.collapse');
+const sideBar = document.querySelector('.sidebar');
+
+collapseIcon.addEventListener('click', function () {
+    sideBar.classList.toggle('sidebar-collapse');
+})

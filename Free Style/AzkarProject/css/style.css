@@ -3,6 +3,10 @@
 /* ! Start Global Variables */
 :root {
   --main-transition: 0.3s;
+  --bg-color: #333;
+  --bg-alt-color: #222;
+  --color: #eee;
+  --identity-color: white;
 }
 .bg-white {
   --bg-color: #eee;
@@ -10,12 +14,12 @@
   --color: #000;
   --identity-color: black;
 }
-.bg-black {
+/* .bg-black {
   --bg-color: #333;
   --bg-alt-color: #222;
   --color: #eee;
   --identity-color: white;
-}
+} */
 
 /* ? Start Global Variables */
 /* ! start Global Rules */
@@ -32,7 +36,7 @@ a {
 }
 body {
   font-family: "Cairo", sans-serif;
-  background-color: var(--bg-alt-color);
+
   /* font-family: "Open Sans", sans-serif; */
 }
 /* ! Start Components */
@@ -70,23 +74,37 @@ body {
   gap: 30px;
   position: fixed;
   z-index: 1;
+  transition: var(--main-transition);
 }
 .sidebar a,
-.theme {
+.theme,
+.collapse {
   color: var(--color);
   transition: var(--main-transition);
   padding: 5px 10px;
   border-radius: 15px;
 }
-.sidebar a:hover,
-.sidebar .theme:hover {
+a.active {
   color: var(--bg-alt-color);
   background-color: var(--color);
 }
-.theme {
+.sidebar a:hover,
+.sidebar .theme:hover,
+.sidebar .collapse:hover {
+  color: var(--bg-alt-color);
+  background-color: var(--color);
+}
+.theme,
+.collapse {
   border-top: 1px solid var(--color);
   border-radius: 0;
   cursor: pointer;
+}
+.sidebar-collapse .txt {
+  display: none;
+}
+.sidebar-collapse {
+  min-width: 40px;
 }
 @media (max-width: 767px) {
   .sidebar .txt {
@@ -105,6 +123,9 @@ body {
   background-color: var(--bg-alt-color);
   color: var(--color);
   direction: rtl;
+}
+.sidebar-collapse + .content {
+  margin-left: 20px;
 }
 .content h1 {
   text-align: center;

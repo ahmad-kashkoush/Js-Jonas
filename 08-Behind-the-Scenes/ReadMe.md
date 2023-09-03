@@ -90,4 +90,14 @@
 
 * **What is TDZ** ❓ the place between the beginning of scope and the declaration of the variable for unhoisted types like let, const 🚀, error message is uninitiaized
 
+  ---
   
+  ## primitive type vs reference type
+  
+  * **objects **--> restores the reference of address in the stack and the address contains the value in the heap
+  
+  * **Primitives**--> restores the value itself in the stack
+  
+    ![](ReferenceVsPrimitiveType.png)
+  
+     
