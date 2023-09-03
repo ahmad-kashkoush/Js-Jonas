@@ -30,8 +30,8 @@ for (let i = 0; i < piece.length; i++)
 // toggle dark and white mode
 const themeIcon = document.querySelector('.theme');
 themeIcon.addEventListener('click', function () {
-    document.querySelector('.page').classList.toggle('bg-white');
-    document.querySelector('.page').classList.toggle('bg-black');
+    document.querySelector('body').classList.toggle('bg-white');
+    // document.querySelector('.page').classList.toggle('bg-black');
 })
 //  side bar collapse
 const collapseIcon = document.querySelector('.collapse');
