@@ -417,3 +417,143 @@ for (const [oddKey, oddValue] of Object.entries(game.odds)) {
   console.log(`Odds of ${printedKey}: ${oddValue}`);
 }
 ```
+
+## Set ⭐
+
+```js
+// you must add an iterable
+const mySet = new Set([5, 1, 2, 3, 4, 2, 1]);
+console.log(mySet);
+
+//  Methods + properties 😎😎😎
+
+mySet.add(20);
+mySet.delete(5);
+console.log(mySet.has(20)); // true
+console.log(mySet.size);
+console.log(...mySet);
+
+// Get An array of unique values
+
+const arr = [1, 2, 1, 2, 3, 5, 1, 2, 5];
+const arrUnique = [...new Set(arr)];
+console.log(arrUnique);
+```
+
+## maps🎉
+
+```js
+// map is like set
+const rest = new Map();
+rest.set('ali', 'sameer');
+// console.log(rest.get('ali'));//
+
+rest
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'we are open')
+  .set(false, 'we are close');
+
+const check = function (time) {
+  console.log(rest.get(rest.get('open') <= time && rest.get('close') >= time));
+};
+// If you add an object as map key, make sure to use the same reference
+// because objects return the address of value stored in the heap
+rest.set([1, 2], 'ahmed');
+console.log(rest.has([1, 2])); // false
+// if same objects with same values doesn't mean same address
+// solution ⭐⭐
+const obj = [1, 2];
+rest.set(obj, 'ahmed');
+// console.log(rest.has(obj));
+// You can also Enter values in map as entries🤯🤯
+const Emojie = new Map([
+  ['done', '✅'],
+  ['laugh', '😂'],
+  ['ball', '🎱'],
+]);
+
+// console.log(Emojie);
+// you can convert object to entre and put it inside map
+// const restaurantMap = new Map([Object.entries(restaurant)])
+```
+
+#### Question Game using map 🥵
+
+```js
+const question = new Map([
+  ['question', 'what is the best Programming Language?'],
+  [1, 'Java'],
+  [2, 'cpp'],
+  [3, 'javascript'],
+  ['correct', 3],
+  [true, 'correct 🏆'],
+  [false, 'Wrong ❌'],
+]);
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value} `);
+  }
+}
+const answer = Number(prompt('your Answer'));
+
+console.log(question.get(answer === question.get('correct')));
+// Convert Map to array🍏
+console.log([...question]);
+```
+
+## Coding Challenge #3
+
+```js
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. ✅Create an array 'events' of the different game events that happened (no duplicates)
+2. ✅After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. ✅Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. ✅Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+  [true, 'First Half'],
+  [false, 'Second Half'],
+]);
+
+// Solution ⭐⭐⭐⭐⭐
+// 1.
+const eventsUnique = new Set([...gameEvents.values()]);
+console.log(eventsUnique);
+// 2
+gameEvents.delete(64);
+// console.log(gameEvents.entries());
+// 3.
+const events = [...gameEvents.keys()];
+let mx = 0;
+for (const item of events) {
+  mx = Math.max(mx, item);
+}
+console.log(`on Average an event happend every ${mx / gameEvents.size}`);
+
+// 4.
+for (const [key, value] of gameEvents) {
+  if (typeof key === 'number') {
+    console.log(`[${gameEvents.get(key < 45)}] ${key}: ${value} `);
+  }
+}
+```

@@ -32,6 +32,232 @@ const restaurant = {
     },
 };
 
+//  ## String 🧠🧠
+const airline = 'Tap Air Egypt';
+// Extract firstWord
+const tap = airline.slice(0, airline.indexOf(' '));
+// slice gives chars [startIndex, endIndex)
+const air = airline.slice(airline.indexOf(' ') + 1, airline.lastIndexOf(' '));
+const egypt = airline.slice(airline.lastIndexOf(' ') + 1);
+console.log(tap, air, egypt);
+
+// Negative index mean start from end
+console.log(airline.slice(-1));
+
+/*  Boxing
+    * convert primitive string to object string with same content
+    * it is used to make us use string with methods
+    * after executing the method it returns primitve string back
+ */
+
+const capitalize = function (str) {
+    return str[0].toUpperCase() + str.slice(1).toLowerCase();
+}
+
+let a = capitalize('AHmed');
+// Compare Names without🌟 caseSensitive
+const fullName = '  aHmedKashkoush \n';
+const fullName2 = 'Ahmed          Kashkoush    ';
+// console.log(fullName.toLowerCase().trim === fullName2.toLowerCase().trim);
+
+console.log(fullName.toLowerCase().trim(), fullName2.toLowerCase().trimEnd());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Coding Challenge #3
+
+// /* 
+// Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+// 1. ✅Create an array 'events' of the different game events that happened (no duplicates)
+// 2. ✅After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// 3. ✅Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. ✅Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+//       [FIRST HALF] 17: ⚽️ GOAL
+
+// GOOD LUCK 😀
+// */
+
+// const gameEvents = new Map([
+//     [17, '⚽️ GOAL'],
+//     [36, '🔁 Substitution'],
+//     [47, '⚽️ GOAL'],
+//     [61, '🔁 Substitution'],
+//     [64, '🔶 Yellow card'],
+//     [69, '🔴 Red card'],
+//     [70, '🔁 Substitution'],
+//     [72, '🔁 Substitution'],
+//     [76, '⚽️ GOAL'],
+//     [80, '⚽️ GOAL'],
+//     [92, '🔶 Yellow card'],
+//     [true, 'First Half'],
+//     [false, 'Second Half']
+// ]);
+
+// // Solution ⭐⭐⭐⭐⭐
+// // 1.
+// const eventsUnique = new Set([...gameEvents.values()]);
+// console.log(eventsUnique);
+// // 2
+// gameEvents.delete(64)
+// // console.log(gameEvents.entries());
+// // 3.
+// const events = [...gameEvents.keys()];
+// let mx = 0;
+// for (const item of events) {
+//     mx = Math.max(mx, item);
+
+// }
+// console.log(`on Average an event happend every ${mx / gameEvents.size}`);
+
+// // 4. 
+// for (const [key, value] of gameEvents) {
+//     if (typeof key === 'number') {
+//         console.log(
+//             `[${gameEvents.get(key < 45)}] ${key}: ${value} `
+//         );
+//     }
+// }
+
+
+
+
+
+
+
+// //  ## maps
+// //  map is like set but 
+// const rest = new Map();
+// rest.set('ali', 'sameer');
+// // console.log(rest.get('ali'));// 
+// //  different from cpp, you can set map as key to other map
+// rest
+//     .set('open', 11)
+//     .set('close', 23)
+//     .set(true, 'we are open')
+//     .set(false, 'we are close');
+
+// const check = function (time) {
+//     console.log(rest.get((rest.get('open') <= time && rest.get('close') >= time)));
+// }
+// // If you add an object as map key, make sure to use the same reference
+// // because objects return the address of value stored in the heap
+// rest.set([1, 2], 'ahmed');
+// console.log(rest.has([1, 2]));//  false
+// // if same objects with same values doesn't mean same address
+// // solution ⭐⭐
+// const obj = [1, 2];
+// rest.set(obj, 'ahmed');
+// // console.log(rest.has(obj));
+// //  You can also Enter values in map as entries🤯🤯
+// const Emojie = new Map([
+//     ['done', '✅'],
+//     ['laugh', '😂'],
+//     ['ball', '🎱']
+// ]);
+
+// // console.log(Emojie);
+// // you can convert object to entre and put it inside map
+// // const restaurantMap = new Map([Object.entries(restaurant)])
+
+// const question = new Map([
+//     ['question', 'what is the best Programming Language?'],
+//     [1, 'Java'],
+//     [2, 'cpp'],
+//     [3, 'javascript'],
+//     ['correct', 3],
+//     [true, 'correct 🏆'],
+//     [false, 'Wrong ❌']
+// ]);
+
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//     if (typeof key === 'number') {
+//         console.log(`Answer ${key}: ${value} `);
+//     }
+// }
+// // const answer = Number(prompt('your Answer'))
+
+// // console.log(question.get(answer === question.get('correct')));
+// // Convert Map to array
+// console.log([...question]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const mySet = new Set([5, 1, 2, 3, 4, 2, 1]);
+// // console.log(mySet);
+
+// //  #### Methods + properties
+// mySet.add(20);
+// mySet.delete(5);
+// console.log(mySet.has(20));//  true
+// console.log(mySet.size);
+// console.log(...mySet);
+
+// //  Get An array of unique values
+
+// const arr = [1, 2, 1, 2, 3, 5, 1, 2, 5];
+// const arrUnique = [...new Set(arr)];
+// console.log(arrUnique);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // object value, key and entries
 // console.log(Object.values(restaurant.openingHours));
@@ -71,48 +297,48 @@ const restaurant = {
 
 
 
-// ! Coding Challenge 2
+// // ! Coding Challenge 2
 
-const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-        [
-            'Neuer',
-            'Pavard',
-            'Martinez',
-            'Alaba',
-            'Davies',
-            'Kimmich',
-            'Goretzka',
-            'Coman',
-            'Muller',
-            'Gnarby',
-            'Lewandowski',
-        ],
-        [
-            'Burki',
-            'Schulz',
-            'Hummels',
-            'Akanji',
-            'Hakimi',
-            'Weigl',
-            'Witsel',
-            'Hazard',
-            'Brandt',
-            'Sancho',
-            'Gotze',
-        ],
-    ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-        team1: 1.33,
-        x: 3.25,
-        team2: 6.5,
-    },
-};
+// const game = {
+//     team1: 'Bayern Munich',
+//     team2: 'Borrussia Dortmund',
+//     players: [
+//         [
+//             'Neuer',
+//             'Pavard',
+//             'Martinez',
+//             'Alaba',
+//             'Davies',
+//             'Kimmich',
+//             'Goretzka',
+//             'Coman',
+//             'Muller',
+//             'Gnarby',
+//             'Lewandowski',
+//         ],
+//         [
+//             'Burki',
+//             'Schulz',
+//             'Hummels',
+//             'Akanji',
+//             'Hakimi',
+//             'Weigl',
+//             'Witsel',
+//             'Hazard',
+//             'Brandt',
+//             'Sancho',
+//             'Gotze',
+//         ],
+//     ],
+//     score: '4:0',
+//     scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//     date: 'Nov 9th, 2037',
+//     odds: {
+//         team1: 1.33,
+//         x: 3.25,
+//         team2: 6.5,
+//     },
+// };
 
 /* *
 Let's continue with our football betting app!
@@ -134,22 +360,22 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 
 GOOD LUCK 😀 */
 // Solution ⭐⭐⭐⭐⭐⭐
-// 1. 
-for (let [goalNumber, playerName] of game.scored.entries()) {
-    console.log(`Goal ${goalNumber + 1}: ${playerName}`);
-}
-// 2. 
-let sum = 0;
-console.log(sum / Object.keys(game.odds).length);
+// // 1. 
+// for (let [goalNumber, playerName] of game.scored.entries()) {
+//     console.log(`Goal ${goalNumber + 1}: ${playerName}`);
+// }
+// // 2. 
+// let sum = 0;
+// console.log(sum / Object.keys(game.odds).length);
 
-// 3.
-for (const [oddKey, oddValue] of Object.entries(game.odds)) {
-    // console.log(oddKey, oddValue);
-    let printedKey = game[oddKey] ?? 'Draw';
-    if (printedKey != 'Draw') printedKey = 'Victory ' + printedKey;
-    // console.log(printedKey);
-    console.log(`Odds of ${printedKey}: ${oddValue}`);
-}
+// // 3.
+// for (const [oddKey, oddValue] of Object.entries(game.odds)) {
+//     // console.log(oddKey, oddValue);
+//     let printedKey = game[oddKey] ?? 'Draw';
+//     if (printedKey != 'Draw') printedKey = 'Victory ' + printedKey;
+//     // console.log(printedKey);
+//     console.log(`Odds of ${printedKey}: ${oddValue}`);
+// }
 // /*
 // We're building a football betting app (soccer for my American friends 😅)!
 
