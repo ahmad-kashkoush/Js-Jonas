@@ -1,10 +1,10 @@
-// 'use strict'
-// // Data needed for a later exercise
-// // const flights =
-// //     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+'use strict'
+// // // Data needed for a later exercise
+// // // const flights =
+// // //     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 
-// // Data needed for first part of the section
+// // // Data needed for first part of the section
 const restaurant = {
     name: 'Classico Italiano',
     location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -32,130 +32,321 @@ const restaurant = {
     },
 };
 
-// ! ## Short Circuting && vs ||
-// It will return first truthy value for **OR** 🚀, or last **falsy Value**
-console.log(3 || 'Kashkoush');// 3
-console.log(0 || NaN || null || undefined);// undefined because it is the last
-// It will return **first falsy Value** for **AND**🚀 or last **truty Value**
-console.log(0 && 'kashkoush');//0
-console.log('ahmed' && 'mohamed' && 1 && 'last truty Value');// last Truthy Value
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // ! ## Rest Pattern
-// // ? Destructring
-// //  #### On Arrays
-// // packets values into array
-// const [a, b, , ...arrWithRestPattern] = [1, 2, 3, 4, 5];// arrWithRestPattern=[allElements after last variable assigned];
-// console.log(a, b, ...arrWithRestPattern);
-
-// const [pizza, , Risotto, ...allOtherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
-// //allOtherFood will take all values after third element of the array
-// // doesn't contain **skipped** Element
-// console.log(pizza, Risotto, allOtherFood);
-// // #### On Objects
-// // I want to take sat and all others be stored in weekDays
-// const { sat, ...weekDays } = restaurant.openingHours;
-// console.log(weekDays);
-// // ? Functions
-// // [Problem] create a function that accept any number of parameters and sum all of them
-// const add = function (...numbers) {// arguments will packed into array called number
-//     let sum = 0;
-//     for (let i = 0; i < numbers.length; i++)
-//         sum += numbers[i];
-//     return sum;
-
-// }
-// console.log(add(1, 2));
-// console.log(add(1, 2, 3, 4));
-// const arr10 = [2, 3, 4, 5, 3, 2];
-// console.log(add(1, 2, 3, 4, 5, 5, 5, 242, 23, 4, ...arr10));// arr10 will be expeanded
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // ! Spread operator
-// //  Used to avoid array shallow copy
-// const arr = [1, 2, 3];
-// const arrCpy = arr;
-// arrCpy[0] = 10;// I only need to change arrCpy[0] not arr[0]
-// console.log(arr[0], arrCpy[0]);// arr[0] is changed 
-// const deepCpy = [...arr];
-// deepCpy[2] = 15;
-// console.log(deepCpy[2], arr[2]);// only deepCpy is changing
-
-// // Joining two arrays
-// const mergedArrays = [...restaurant.starterMenu, ...restaurant.mainMenu];
-// console.log(mergedArrays);
-
-// // passing arguments to funcitons
-// const arrIngredients = ['chicken', 'meat', 'cheese'];
-// restaurant.orderPasta(...arrIngredients);
-// // Deep Clone for objects and avoid shallow copy 🏆
-// const newObj = {
-//     p1: [1, 2, 3, 4, 5, [1, 2, 3]]
+// // object value, key and entries
+// console.log(Object.values(restaurant.openingHours));
+// console.log(Object.keys(restaurant.openingHours));
+// for (let [day, { open, close }] of Object.entries(restaurant.openingHours))
+//     console.log(day, open, close);
+// ## Optinal chaining ?.
+// #### If you have multiple nested objects
+// and you want to avoid error of [undefined.object];
+// Optional chaning Works by checking the prev expression undefined or not
+// a.b.c?.-->checking if a.b.c is undefined
+// const a = {
+//     b: { c: { d: { f: 'hello' } } },
+//     meThod(yourName) { console.log(`Hello, ${yourName}`); }
 // };
-// const newObjCpy = { ...newObj };
-// newObjCpy.p1 = [50, 60];
-// console.log(newObj.p1, newObjCpy.p1);
-// // ! Array destructing
-// const arr = [2, 3, 4];
-// const [a, b, c] = arr;
-// console.log(a, b, c);
-// //  to take first and third
-// const [x, , y] = arr;
-// console.log(x, y); //2, 4
+// console.log(a.b.c.d.e.f);// error because of e is not there
+// console.log(a.b.c.d.e?.f);// undefined
+// a.meThod('ahemd');
+// console.log(a.notDefinedMethod?.('ahmed'));// will stop evaulating at ?.
 
-// // Nested Destructing 🥤
 
-// const arr1 = [1, 2, 3, [4, 5]];
-// const [i, , , [j, k]] = arr1;// need first and last
-// console.log(i, j, k);
 
-// // You can set Default values before destructing
-// const [h = 1, m = 1, n = 1, t = 10] = arr;
-// console.log(h, m, n, t);
+
+// const days = ["sat", 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'];
+// for (let day of days) {
+//     // console.log(day);
+//     const open = restaurant.openingHours[day]?.open ?? "closed";
+//     console.log(
+//         `on ${day} open at ${open}`
+//     );
+// }
+
+
+
+
+
+
+
+
+// ! Coding Challenge 2
+
+const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+        ],
+        [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+        ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+};
+
+/* *
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀 */
+// Solution ⭐⭐⭐⭐⭐⭐
+// 1. 
+for (let [goalNumber, playerName] of game.scored.entries()) {
+    console.log(`Goal ${goalNumber + 1}: ${playerName}`);
+}
+// 2. 
+let sum = 0;
+console.log(sum / Object.keys(game.odds).length);
+
+// 3.
+for (const [oddKey, oddValue] of Object.entries(game.odds)) {
+    // console.log(oddKey, oddValue);
+    let printedKey = game[oddKey] ?? 'Draw';
+    if (printedKey != 'Draw') printedKey = 'Victory ' + printedKey;
+    // console.log(printedKey);
+    console.log(`Odds of ${printedKey}: ${oddValue}`);
+}
+// /*
+// We're building a football betting app (soccer for my American friends 😅)!
+
+// Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
+
+// 1.[✅] Create one player array for each team (variables 'players1' and 'players2')
+// 2.[✅] The first player in any player array is the goalkeeper and the others are field players. For Bayern Munich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10 field players
+// 3.[✅] Create an array 'allPlayers' containing all players of both teams (22 players)
+// 4.[✅]During the game, Bayern Munich (team 1) used 3 substitute players. So create a new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
+// 5.[✅] Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
+// 6.[✅]Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
+// 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
+
+// TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
+
+// GOOD LUCK 😀
+// */
+
+// const [players1, players2] = game.players;
+// // console.log(players1, players2);
+// const [gk, ...fieldPlayer] = players1;
+// // console.log(gk, fieldPlayer);
+// const allPlayers = [...players1, ...players2];
+// // console.log(allPlayers);
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// console.log(players1Final);
+// const { team1, x: draw, team2 } = game.odds;
+// console.log(team1, draw, team2);
+
+// const printGoals = function (...playerNames) {// Rest Pattern
+//     console.log(...playerNames, playerNames.length);// spread Pattern
+// }
+// const team1Winning = team1 < team2 && game.team1;
+// const team2Winning = team2 < team1 && game.team2;
+// console.log(team1Winning || team2Winning);
+// // printGoals('ahmed', 'ismail', 'khalid');
+
+// // // ! Nullish Values
+// // const value = 0;
+// // // ! I want to get the value if it is defined
+// // let guess = value || 10; // 10 which is wrong
+// // console.log(guess);
+// // guess = value ?? 10; // 0 which is true
+// // console.log(guess);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // // ! ## Short Circuting && vs ||
+// // // It will return first truthy value for **OR** 🚀, or last **falsy Value**
+// // console.log(3 || 'Kashkoush');// 3
+// // console.log(0 || NaN || null || undefined);// undefined because it is the last
+// // // It will return **first falsy Value** for **AND**🚀 or last **truty Value**
+// // console.log(0 && 'kashkoush');//0
+// // console.log('ahmed' && 'mohamed' && 1 && 'last truty Value');// last Truthy Value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // // ! ## Rest Pattern
+// // // ? Destructring
+// // //  #### On Arrays
+// // // packets values into array
+// // const [a, b, , ...arrWithRestPattern] = [1, 2, 3, 4, 5];// arrWithRestPattern=[allElements after last variable assigned];
+// // console.log(a, b, ...arrWithRestPattern);
+
+// // const [pizza, , Risotto, ...allOtherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// // //allOtherFood will take all values after third element of the array
+// // // doesn't contain **skipped** Element
+// // console.log(pizza, Risotto, allOtherFood);
+// // // #### On Objects
+// // // I want to take sat and all others be stored in weekDays
+// // const { sat, ...weekDays } = restaurant.openingHours;
+// // console.log(weekDays);
+// // // ? Functions
+// // // [Problem] create a function that accept any number of parameters and sum all of them
+// // const add = function (...numbers) {// arguments will packed into array called number
+// //     let sum = 0;
+// //     for (let i = 0; i < numbers.length; i++)
+// //         sum += numbers[i];
+// //     return sum;
+
+// // }
+// // console.log(add(1, 2));
+// // console.log(add(1, 2, 3, 4));
+// // const arr10 = [2, 3, 4, 5, 3, 2];
+// // console.log(add(1, 2, 3, 4, 5, 5, 5, 242, 23, 4, ...arr10));// arr10 will be expeanded
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // // ! Spread operator
+// // //  Used to avoid array shallow copy
+// // const arr = [1, 2, 3];
+// // const arrCpy = arr;
+// // arrCpy[0] = 10;// I only need to change arrCpy[0] not arr[0]
+// // console.log(arr[0], arrCpy[0]);// arr[0] is changed 
+// // const deepCpy = [...arr];
+// // deepCpy[2] = 15;
+// // console.log(deepCpy[2], arr[2]);// only deepCpy is changing
+
+// // // Joining two arrays
+// // const mergedArrays = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// // console.log(mergedArrays);
+
+// // // passing arguments to funcitons
+// // const arrIngredients = ['chicken', 'meat', 'cheese'];
+// // restaurant.orderPasta(...arrIngredients);
+// // // Deep Clone for objects and avoid shallow copy 🏆
+// // const newObj = {
+// //     p1: [1, 2, 3, 4, 5, [1, 2, 3]]
+// // };
+// // const newObjCpy = { ...newObj };
+// // newObjCpy.p1 = [50, 60];
+// // console.log(newObj.p1, newObjCpy.p1);
+// // // ! Array destructing
+// // const arr = [2, 3, 4];
+// // const [a, b, c] = arr;
+// // console.log(a, b, c);
+// // //  to take first and third
+// // const [x, , y] = arr;
+// // console.log(x, y); //2, 4
+
+// // // Nested Destructing 🥤
+
+// // const arr1 = [1, 2, 3, [4, 5]];
+// // const [i, , , [j, k]] = arr1;// need first and last
+// // console.log(i, j, k);
+
+// // // You can set Default values before destructing
+// // const [h = 1, m = 1, n = 1, t = 10] = arr;
+// // console.log(h, m, n, t);

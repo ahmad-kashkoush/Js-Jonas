@@ -80,7 +80,7 @@ console.log(p1, p2);
 
 ## ... spread operator😶‍🌫️
 
-#### It works on all **Iterables**:
+#### It works on all **Iterables**
 
     1. Strings
     2. Arrays
@@ -88,7 +88,7 @@ console.log(p1, p2);
     4. Sets
     5. doesn't work on objects
 
-#### Muliptle values seperated by comma only for :
+#### Muliptle values seperated by comma only for
 
     1. function arguments
     2. array assignments --> const a=...dflj;a
@@ -176,7 +176,7 @@ console.log(add(1, 2, 3, 4, 5, 5, 5, 242, 23, 4, ...arr10)); // arr10 will be ex
 
 ## Short Circuting && vs ||🤨
 
-#### It will return **OR ||** 🚀:
+#### It will return **OR ||** 🚀
 
     1. first truthy value for
     2. last **falsy Value** if no truthy💥
@@ -186,7 +186,7 @@ console.log(3 || 'Kashkoush'); // 3
 console.log(0 || NaN || null || undefined); // undefined because it is the last
 ```
 
-#### It will return **AND &&**🚀:
+#### It will return **AND &&**🚀
 
     1. first falsy Value if exists
     2. last truty Value if no falsy
@@ -194,4 +194,144 @@ console.log(0 || NaN || null || undefined); // undefined because it is the last
 ```js
 console.log(0 && 'kashkoush'); //0
 console.log('ahmed' && 'mohamed' && 1 && 'last truty Value'); // last Truthy Value
+```
+
+## Nullish Value Operator ??
+
+- It is the same as ||
+- || falsy values are (0, '',Undefined, null,false)
+- ?? falsy values or **nullish values** are (null, undefined)
+
+```js
+const value = 0;
+// ! I want to get the value if it is defined
+let guess = value || 10; // 10 which is wrong
+guess = value ?? 10; // 0 which is true
+```
+
+## Coding Challenge 1
+
+```js
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+/*
+We're building a football betting app (soccer for my American friends 😅)!
+
+Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
+
+1.[✅] Create one player array for each team (variables 'players1' and 'players2')
+2.[✅] The first player in any player array is the goalkeeper and the others are field players. For Bayern Munich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10 field players
+3.[✅] Create an array 'allPlayers' containing all players of both teams (22 players)
+4.[✅]During the game, Bayern Munich (team 1) used 3 substitute players. So create a new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
+5.[✅] Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
+6.[✅]Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
+7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
+
+TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
+
+GOOD LUCK 😀
+*/
+// Solution⭐⭐⭐⭐
+const [players1, players2] = game.players;
+// console.log(players1, players2);
+const [gk, ...fieldPlayer] = players1;
+// console.log(gk, fieldPlayer);
+const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+const { team1, x: draw, team2 } = game.odds;
+console.log(team1, draw, team2);
+
+const printGoals = function (...playerNames) {
+  // Rest Pattern
+  console.log(...playerNames, playerNames.length); // spread Pattern
+};
+const team1Winning = team1 < team2 && game.team1;
+const team2Winning = team2 < team1 && game.team2;
+console.log(team1Winning || team2Winning);
+// printGoals('ahmed', 'ismail', 'khalid');
+```
+
+## For of loop
+
+```js
+const arr = ['ahmed', 'mohamed', 'ali', 'ismail', 'khalid', 'faten'];
+for (let item of arr) console.log(item);
+// to get item with index [arr.entries];
+for (let item of arr.entries()) console.log(item);
+// You can destruct entry also
+for (let [index, value] of arr.entries())
+  console.log(`${index + 1} : ${value}`);
+```
+
+## Optinal chaining ?.
+
+#### If you have multiple nested objects
+
+1.  and you want to avoid error of [undefined.object];
+2.  Optional chaning Works by checking the **LHS** expression undefined or not
+3.  a.b.c?.-->checking if a.b.c is undefined
+
+```js
+const a = {
+  b: { c: { d: { f: 'hello' } } },
+  meThod(yourName) {
+    console.log(`Hello, ${yourName}`);
+  },
+};
+console.log(a.b.c.d.e.f); // error because of e is not there
+console.log(a.b.c.d.e?.f); // undefined
+a.meThod('ahemd');
+console.log(a.notDefinedMethod?.('ahmed')); // will stop evaulating at ?.
+```
+
+## object value, key and entries
+
+```js
+console.log(Object.values(restaurant.openingHours));
+
+console.log(Object.keys(restaurant.openingHours));
+
+for (let [day, { open, close }] of Object.entries(restaurant.openingHours))
+  console.log(day, open, close);
 ```
