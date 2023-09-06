@@ -676,32 +676,29 @@
 // // // // // You can set Default values before destructing
 // // // // const [h = 1, m = 1, n = 1, t = 10] = arr;
 // // // // console.log(h, m, n, t);
-let str = `- [Array Destructing]()
-- [Object Destructing 🫣]()
-- [... spread operator😶‍🌫️]()
-- [Rest Pattern 💬]()
-- [Short Circuting && vs ||🤨]()
-- [Nullish Value Operator ??]()
-- [For of loop]()
-- [Optinal chaining ?.]()
-- [Coding Challenge 1]()
-- [Coding Challenge 2]()
-- [Set ⭐]()
-- [maps🎉]()
-- [Coding Challenge #3]()
-- [String 🧠🧠]()
-- [Coding Challenge #4]()
-- [Latest string Challenge🎉🎉🎉]()`
+let str = `- [Array Destructing](#Array%20Destructing)
+- [Object Destructing 🫣](#Object%20Destructing%20🫣)
+- [... spread operator😶‍🌫️](#...%20spread%20operator😶‍🌫️)
+- [Rest Pattern 💬](#Rest%20Pattern%20💬)
+- [Short Circuting && vs ||🤨](#Short%20Circuting%20&&%20vs%20||🤨)
+- [Nullish Value Operator ??](#Nullish%20Value%20Operator%20??)
+- [For of loop](#For%20of%20loop)
+- [Optinal chaining ?.](#Optinal%20chaining%20?.)
+- [Coding Challenge 1](#Coding%20Challenge%201)
+- [Coding Challenge 2](#Coding%20Challenge%202)
+- [Set ⭐](#Set%20⭐)
+- [maps🎉](#maps🎉)
+- [Coding Challenge #3](#Coding%20Challenge%20#3)
+- [String 🧠🧠](#String%20🧠🧠)
+- [Coding Challenge #4](#Coding%20Challenge%20#4)
+- [Latest string Challenge🎉🎉🎉](#Latest%20string%20Challenge🎉🎉🎉)`
 str = str.split('\n')
 // console.log(str);
+const ans = [];
 for (let s of str) {
-    s = s
-        .replace('-', '')
-        .replace('[', '')
-        .replace(']', '')
-        .replace('(', '')
-        .replace(')', '')
-        .trim()
-        .replaceAll(' ', '%20');
-    console.log(['#', s].join(''));
+    let [title, link] = [s.slice(0, s.indexOf(']') + 1), s.slice(s.indexOf(']') + 1)]
+    link = link.replaceAll('%20', '-');
+    ans.push([title, link].join(''));
+    // console.log(title, link);
 }
+console.log(ans.join('\n'));
