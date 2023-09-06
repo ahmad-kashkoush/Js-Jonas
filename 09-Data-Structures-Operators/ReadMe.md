@@ -1,3 +1,22 @@
+#### Table Of Content📕
+
+- [Array Destructing](#Array%20Destructing)
+- [Object Destructing 🫣](#Object%20Destructing%20🫣)
+- [... spread operator😶‍🌫️](#...%20spread%20operator😶‍🌫️)
+- [Rest Pattern 💬](#Rest%20Pattern%20💬)
+- [Short Circuting && vs ||🤨](#Short%20Circuting%20&&%20vs%20||🤨)
+- [Nullish Value Operator ??](#Nullish%20Value%20Operator%20??)
+- [For of loop](#For%20of%20loop)
+- [Optinal chaining ?.](#Optinal%20chaining%20?.)
+- [Coding Challenge 1](#Coding%20Challenge%201)
+- [Coding Challenge 2](#Coding%20Challenge%202)
+- [Set ⭐](#Set%20⭐)
+- [maps🎉](#maps🎉)
+- [Coding Challenge #3](#Coding%20Challenge%20#3)
+- [String 🧠🧠](#String%20🧠🧠)
+- [Coding Challenge #4](#Coding%20Challenge%20#4)
+- [Latest string Challenge🎉🎉🎉](#Latest%20string%20Challenge🎉🎉🎉)
+
 # 09 Data structure operators 🚀
 
 ## Array Destructing
@@ -304,13 +323,13 @@ for (let [index, value] of arr.entries())
   console.log(`${index + 1} : ${value}`);
 ```
 
-## Optinal chaining ?.
+## Optinal chaining ?
 
 #### If you have multiple nested objects
 
-1.  and you want to avoid error of [undefined.object];
-2.  Optional chaning Works by checking the **LHS** expression undefined or not
-3.  a.b.c?.-->checking if a.b.c is undefined
+1. and you want to avoid error of [undefined.object];
+2. Optional chaning Works by checking the **LHS** expression undefined or not
+3. a.b.c?.-->checking if a.b.c is undefined
 
 ```js
 const a = {

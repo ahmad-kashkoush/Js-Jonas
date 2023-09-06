@@ -1,25 +1,25 @@
 'use strict'
-const flights =
-    '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-// 🔴 Delayed Departure from FAO to TXL (11h25)
-//              Arrival from BRU to FAO (11h45)
-//   🔴 Delayed Arrival from HEL to FAO (12h05)
-//            Departure from FAO to LIS (12h30)
-let flightsArr = flights.split('+');
-for (let flight of flightsArr) {
-    flight = flight.replaceAll('_', ' ').trim();
+// const flights =
+//     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// // 🔴 Delayed Departure from FAO to TXL (11h25)
+// //              Arrival from BRU to FAO (11h45)
+// //   🔴 Delayed Arrival from HEL to FAO (12h05)
+// //            Departure from FAO to LIS (12h30)
+// let flightsArr = flights.split('+');
+// for (let flight of flightsArr) {
+//     flight = flight.replaceAll('_', ' ').trim();
 
-    if (flight.startsWith('Delayed'))
-        flight = ['🔴 ', flight].join('');
-    flight = flight.split(';');
-    flight[1] = flight[1].slice(0, 3).toUpperCase();
-    flight[2] = flight[2].slice(0, 3).toUpperCase();
-    flight[3] = ['(', flight[3].replace(':', 'h'), ')'].join('');
-    flight = [flight[0], 'from', flight[1], 'to', flight[2], flight[3]].join(' ').padStart(45);
+//     if (flight.startsWith('Delayed'))
+//         flight = ['🔴 ', flight].join('');
+//     flight = flight.split(';');
+//     flight[1] = flight[1].slice(0, 3).toUpperCase();
+//     flight[2] = flight[2].slice(0, 3).toUpperCase();
+//     flight[3] = ['(', flight[3].replace(':', 'h'), ')'].join('');
+//     flight = [flight[0], 'from', flight[1], 'to', flight[2], flight[3]].join(' ').padStart(45);
 
-    console.log(flight);
+//     console.log(flight);
 
-}
+// }
 // // Coding Challenge #4
 
 // /*
@@ -676,3 +676,32 @@ for (let flight of flightsArr) {
 // // // // // You can set Default values before destructing
 // // // // const [h = 1, m = 1, n = 1, t = 10] = arr;
 // // // // console.log(h, m, n, t);
+let str = `- [Array Destructing]()
+- [Object Destructing 🫣]()
+- [... spread operator😶‍🌫️]()
+- [Rest Pattern 💬]()
+- [Short Circuting && vs ||🤨]()
+- [Nullish Value Operator ??]()
+- [For of loop]()
+- [Optinal chaining ?.]()
+- [Coding Challenge 1]()
+- [Coding Challenge 2]()
+- [Set ⭐]()
+- [maps🎉]()
+- [Coding Challenge #3]()
+- [String 🧠🧠]()
+- [Coding Challenge #4]()
+- [Latest string Challenge🎉🎉🎉]()`
+str = str.split('\n')
+// console.log(str);
+for (let s of str) {
+    s = s
+        .replace('-', '')
+        .replace('[', '')
+        .replace(']', '')
+        .replace('(', '')
+        .replace(')', '')
+        .trim()
+        .replaceAll(' ', '%20');
+    console.log(['#', s].join(''));
+}
