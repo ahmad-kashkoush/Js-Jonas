@@ -1,21 +1,21 @@
 #### Table Of Content📕
 
 - [Array Destructing](#Array-Destructing)
-- [Object Destructing 🫣](#Object-Destructing-🫣)
-- [... spread operator😶‍🌫️](#...-spread-operator😶‍🌫️)
-- [Rest Pattern 💬](#Rest-Pattern-💬)
-- [Short Circuting && vs ||🤨](#Short-Circuting-&&-vs-||🤨)
-- [Nullish Value Operator ??](#Nullish-Value-Operator-??)
+- [Object Destructing 🫣](#Object-Destructing-)
+- [... spread operator😶‍🌫️](#-spread-operator%EF%B8%8F)
+- [Rest Pattern 💬](#Rest-Pattern-)
+- [Short Circuting && vs ||🤨](#Short-Circuting-&&-vs-)
+- [Nullish Value Operator ??](#Nullish-Value-Operator-)
 - [For of loop](#For-of-loop)
-- [Optinal chaining ?.](#Optinal-chaining-?.)
+- [Optinal chaining ?.](#Optinal-chaining-)
 - [Coding Challenge 1](#Coding-Challenge-1)
 - [Coding Challenge 2](#Coding-Challenge-2)
-- [Set ⭐](#Set-⭐)
-- [maps🎉](#maps🎉)
+- [Set ⭐](#Set-)
+- [maps🎉](#maps)
 - [Coding Challenge #3](#Coding-Challenge-#3)
-- [String 🧠🧠](#String-🧠🧠)
+- [String 🧠🧠](#String-)
 - [Coding Challenge #4](#Coding-Challenge-#4)
-- [Latest string Challenge🎉🎉🎉](#Latest-string-Challenge🎉🎉🎉)
+- [Latest string Challenge🎉🎉🎉](#Latest-string-Challenge)
 
 # 09 Data structure operators 🚀
 
