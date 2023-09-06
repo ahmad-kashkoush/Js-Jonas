@@ -12,9 +12,9 @@
 - [Coding Challenge 2](#Coding-Challenge-2)
 - [Set ⭐](#Set-)
 - [maps🎉](#maps)
-- [Coding Challenge #3](#Coding-Challenge-#3)
+- [Coding Challenge #3](#Coding-Challenge-3)
 - [String 🧠🧠](#String-)
-- [Coding Challenge #4](#Coding-Challenge-#4)
+- [Coding Challenge #4](#Coding-Challenge-4)
 - [Latest string Challenge🎉🎉🎉](#Latest-string-Challenge)
 
 # 09 Data structure operators 🚀
