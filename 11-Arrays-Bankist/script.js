@@ -112,7 +112,7 @@ const calcSummary = function (acc) {
     .reduce((acc, mov) => mov + acc);
   labelSumOut.textContent = `${Math.abs(out)}€`;
   const interestRate = acc.interestRate;
-  const interest = movements
+  const interest = acc.movements
     .filter((mov) => mov > 0)
     .map((mov) => mov * interestRate / 100)
     .filter((mov) => mov >= 1)
@@ -146,22 +146,28 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
+// Transfer
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+
+})
+
 
 
 
 
 
 // filter
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const deposites = movements.filter((mov) => mov > 0);
-const withdrawl = movements.filter(mov => mov < 0);
-console.log(deposites, withdrawl);
-// reduce 
-const depositesSum = deposites.reduce((acc, cur) => acc + cur);
-const withdrawlSum = withdrawl.reduce((acc = 0, cur) => acc + cur);
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const deposites = movements.filter((mov) => mov > 0);
+// const withdrawl = movements.filter(mov => mov < 0);
+// console.log(deposites, withdrawl);
+// // reduce 
+// const depositesSum = deposites.reduce((acc, cur) => acc + cur);
+// const withdrawlSum = withdrawl.reduce((acc = 0, cur) => acc + cur);
 
-const MaximumValueInMovements = movements.reduce(((acc, mov) => Math.max(acc, mov)), movements[0]);
-console.log(depositesSum, withdrawlSum, MaximumValueInMovements);
+// const MaximumValueInMovements = movements.reduce(((acc, mov) => Math.max(acc, mov)), movements[0]);
+// console.log(depositesSum, withdrawlSum, MaximumValueInMovements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
