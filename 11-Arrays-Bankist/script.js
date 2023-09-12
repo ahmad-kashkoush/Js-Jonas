@@ -63,6 +63,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 
 // My Code 
+// ////////////////////////
+// All functions first
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -76,55 +78,90 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', htmlElement);
   });
 }
-
-/*
-for each account
-1. check first character of each word in lower case
-2. check  pin
-3. if false just do nothing 
-4.  if true
-  4.1 clear inputs
-  4.2 display
-  4.3 change great message
-
-*/
-// functions
-// 
-
-const login = function () {
-  // let obj;
-  // let ok = false;
-  const userName = inputLoginUsername.value.toLowerCase();
-  const pin = Number(inputLoginPin.value);
+displayMovements(account1.movements);
+// ////////////////////////////
+const createUserNames = function (accounts) {
   accounts.forEach(function (account) {
-    let usr = '';
-    account.owner
-      .split(' ')
-      .forEach(function (word) {
-        usr += word[0].toLowerCase();
-      });
-    if (usr === userName && account.pin === pin) {
-      inputLoginUsername.value = '';
-      inputLoginPin.value = '';
-      displayMovements(account.movements);
-      labelWelcome.textContent = `Good Afternoon, ${account.owner.slice(0, account.owner.indexOf(' '))}`;
-      containerApp.style.opacity = 100;
-    }
-
+    account.userName = account.owner.toLocaleLowerCase().split(' ').map((word) => word[0]).join('');
+    console.log(account.userName);
   });
 }
+createUserNames(accounts);
+// //////////////////
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur);
+  labelBalance.textContent = '';
+  labelBalance.textContent = `${balance} €`
+}
 
+calcDisplayBalance(account1.movements);
 // Events and buttons
 // const func = function () { console.log(checkLogin()[0]); }
 // btnLogin.addEventListener('click', login);
+
+
+///////////////////////////////
+const calcSummary = function (acc) {
+  const income = acc.movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => mov + acc);
+
+  labelSumIn.textContent = `${income}€`;
+  const out = acc.movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => mov + acc);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+  const interestRate = acc.interestRate;
+  const interest = movements
+    .filter((mov) => mov > 0)
+    .map((mov) => mov * interestRate / 100)
+    .filter((mov) => mov >= 1)
+    .reduce((acc, mov, i, arr) => acc + mov);
+
+  labelSumInterest.textContent = `${interest}€`;
+
+}
+
+
+
+// Events
 btnLogin.addEventListener('click', function (e) {
+  // prevent page reload+ adding enter keydown
   e.preventDefault();
-  login();
+  // get data from fields
+  const inputUserName = inputLoginUsername.value;
+  const inputPin = Number(inputLoginPin.value);
+  // check login Name;
+  const account = accounts.find((acc) => acc.userName === inputUserName);
+  // if (account && account.pin === inputPin) { My way
+  if (account?.pin === inputPin) { // optional chaining way
+    displayMovements(account.movements);
+    calcSummary(account);
+    calcDisplayBalance(account.movements);
+    labelWelcome.textContent = `Hello,  ${account.owner}`;
+    containerApp.style.opacity = 100;
+
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+  }
 });
 
 
 
 
+
+
+// filter
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const deposites = movements.filter((mov) => mov > 0);
+const withdrawl = movements.filter(mov => mov < 0);
+console.log(deposites, withdrawl);
+// reduce 
+const depositesSum = deposites.reduce((acc, cur) => acc + cur);
+const withdrawlSum = withdrawl.reduce((acc = 0, cur) => acc + cur);
+
+const MaximumValueInMovements = movements.reduce(((acc, mov) => Math.max(acc, mov)), movements[0]);
+console.log(depositesSum, withdrawlSum, MaximumValueInMovements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -139,7 +176,6 @@ btnLogin.addEventListener('click', function (e) {
 // currencies.forEach(function (cur, key, mp) {
 //   console.log(cur, key);
 // })
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // for (const movement of movements) {
 //   console.log(`you ${movement >= 0 ? 'deposited' : 'widthdraw'} ${Math.abs(movement)}$`);
