@@ -1,4 +1,13 @@
 # 10-Functions
+**Table Of Contents**
+- [[#Default Parameters ⭐|Default Parameters ⭐]]
+- [[#Passing Reference vs value type 🧭|Passing Reference vs value type 🧭]]
+- [[#First Class vs Higher order function 📓|First Class vs Higher order function 📓]]
+		- [[#Just a theory video return to slides 🌲|Just a theory video return to slides 🌲]]
+- [[#Accepting a callback function 🚀|Accepting a callback function 🚀]]
+- [[#Function return function 🙃|Function return function 🙃]]
+- [[#Apply, call and **bind** Method 🛩️|Apply, call and **bind** Method 🛩️]]
+
 
 ## Default Parameters ⭐
 
@@ -204,3 +213,4 @@ const displayArr = poll.displayResults;
 displayArr.call({ answers: [5, 2, 3] });
 displayArr.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 ```
+
