@@ -1,13 +1,15 @@
 # 11-Working with Arrays
-- [[#coding challenge 1|coding challenge 1]]
-- [[#Map, Filter, and reduce|Map, Filter, and reduce]]
-- [[#Coding Challenge 2|Coding Challenge 2]]
-- [[#The Magic of chaining Methods|The Magic of chaining Methods]]
-		- [[#Coding Challenge 3|Coding Challenge 3]]
-- [[#flat, flatmap|flat, flatmap]]
-- [[#Sorting In JS|Sorting In JS]]
-- [[#Filling Arrays|Filling Arrays]]
-- [[#Summary|Summary]]
+- [coding challenge 1](#coding-challenge-1)
+- [Map, Filter, and reduce](#map-filter-and-reduce)
+- [Coding Challenge 2](#coding-challenge-2)
+- [The Magic of chaining Methods](#the-magic-of-chaining-methods)
+		- [Coding Challenge 3](#coding-challenge-3)
+- [flat, flatmap](#flat-flatmap)
+- [Sorting In JS](#sorting-in-js)
+- [Filling Arrays](#filling-arrays)
+- [Summary](#summary)
+- [Coding Challenge 4](#coding-challenge-4)
+
 
 
 
@@ -334,3 +336,4 @@ console.log(dogsCpy);
 console.log(dogs);
 
 ```
+
