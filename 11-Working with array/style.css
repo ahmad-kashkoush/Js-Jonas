@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --background-color: white;
+  --text-color: black;
+  --heading-color: #4f4444;
+  --linear-green: linear-gradient(to top left, #39b385, #9be15d);
+  --linear-red: linear-gradient(to top left, #e52a5a, #ff585f);
+  --linear-yellow: linear-gradient(to top left, #ffb003, #ffcb03);
+}
+/* !Start Global Rules */
+body {
+  padding: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3f3f3;
+}
+input,
+button {
+  border: none;
+  outline: none;
+}
+/* ? End Global Rules */
+/* .bg-black */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: no-wrap;
+}
+nav .great {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+nav .img-holder {
+}
+nav .img-holder img {
+  width: 50px;
+  height: 50px;
+}
+nav form {
+  display: flex;
+  gap: 10px;
+}
+nav form .input-login {
+  border-radius: 15px;
+  padding: 10px 5px;
+  text-align: center;
+  width: 9rem;
+
+  opacity: 0.5;
+  font-weight: 600;
+}
+nav form .input-login-user {
+}
+nav form .input-login-pin {
+}
+nav form .login-btn {
+  font-size: 1.5rem;
+  color: inherit;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+main {
+  width: 992px;
+  margin: auto;
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  grid-template-rows: auto repeat(3, 8rem) auto;
+  gap: 2rem;
+  /* opacity: 0; */
+}
+main .balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1 / span 3;
+  padding-left: 5px;
+  padding-right: 25px;
+}
+main .balance div .balance-label {
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+main .balance div .balance-date {
+  color: #888;
+}
+main .balance div .balance-value {
+  color: var(--heading-color);
+  font-weight: 400;
+  font-size: 3rem;
+}
+/* Start Movements */
+.movements {
+  background-color: #fff;
+  border-radius: 10px;
+  grid-row: 2 / span 3;
+  /* grid-column: 1 / span 2; */
+
+  overflow-y: auto;
+}
+.movement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 1.5rem 2rem;
+}
+.movement-type--deposite {
+  background-image: var(--linear-green);
+}
+.movement-type--withdraw {
+  background-image: var(--linear-red);
+}
+
+.movement-row .movement-type {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 11px;
+  border-radius: 10px;
+  color: #fff;
+}
+.movement-row .movement-date {
+  margin-left: 1.3rem;
+  font-size: 0.7rem;
+  color: #666;
+}
+.movement-row .movement-value {
+  margin-left: auto;
+  color: var(--heading-color);
+}
+/* ? End Movements */
+/* ! Start Summary */
+.summary {
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 3;
+}
+p.summary-label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  display: inline-block;
+  margin-right: 0.8rem;
+}
+
+p.summary-label .summary-value {
+  font-size: 1.6rem;
+  margin-right: 0.8rem;
+  margin-left: 0.8rem;
+  font-weight: 500;
+}
+p.summary-label .summary-value-in,
+p.summary-label .summary-value-interest {
+  color: #a6dcad;
+}
+
+p.summary-label .summary-value-out {
+  color: #f5465d;
+}
+.summary .btn--sort {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+/* ? End Summary */
+/* ! Start Operations */
+.operation {
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  grid-column: 2 / 3;
+  /* width: 100%; */
+
+  overflow: hidden;
+}
+.operation h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.operation form {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 0.5rem;
+}
+.operation form .form__input {
+  width: 150px;
+  background-color: #ffd968;
+  border-radius: 7px;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+}
+.operation form .form__input:focus {
+  background-color: #ffe69a;
+}
+.operation form .form__btn {
+  background-color: white;
+  border-radius: 7px;
+  padding: 0.3rem 0.5rem;
+}
+
+.operation form .form__label {
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+/* ! Operation Transfer */
+.operation--transfer {
+  background-image: var(--linear-yellow);
+}
+/* ! Operation Loan */
+.operation--loan {
+  background-image: var(--linear-green);
+}
+.operation--loan .form--loan {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+.operation--loan .form--loan .form__input {
+  background-color: #a9e0a9;
+}
+.operation--loan .form--loan .form__input:focus {
+  background-color: #c8ecc4;
+}
+
+.operation--loan .form--loan .form__label {
+  grid-row: 2;
+}
+
+/* ! Operation close */
+.operation--close {
+  background-image: var(--linear-red);
+}
+.operation--close .form--close .form__input {
+  background-color: #f9919e;
+}
+.operation--close .form--close .form__input:focus {
+  background-color: #fbb5be;
+}
+
+/* ? End Operations */
+/* ! Start Logout Timer */
+.logout-timer {
+  /* grid-column: 4; */
+  margin-top: 0.9rem;
+  grid-row: 5 / span 1;
+  grid-column: 2;
+
+  text-align: right;
+  font-size: 0.8rem;
+}
+.logout-timer .timer {
+  margin-right: 3px;
+  font-weight: 500;
+}

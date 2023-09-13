@@ -128,8 +128,17 @@
                 "file": "11-Working with array/ReadMe.md"
               }
             }
+          },
+          {
+            "id": "a32da943de12e4f5",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -149,6 +158,7 @@
   },
   "active": "ebf1f0c358e47c5f",
   "lastOpenFiles": [
+    "arraySummary.png",
     "11-Arrays-Bankist/ReadMe.md",
     "10-Functions/ReadMe.md",
     "README.md",
