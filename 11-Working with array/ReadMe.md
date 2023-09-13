@@ -118,8 +118,7 @@ console.log(calcAverageHumanAge( [16, 6, 10, 5, 6, 1, 4]));
 1. **It is a bad Practice to chain methods that mutate the array**
 	1. This way You Are making it harder to debug this array in the future
  #### Coding Challenge 3 
- * [[#Coding Challenge 2|Coding Challenge 2]]
- 
+ * [Coding Challenge 2](#Coding%20Challenge%202)
  ```js
    /* rewrite the coding challenge 2
 
@@ -202,7 +201,7 @@ console.log(y);
 
 ```
 ## Summary
-![[arraySummary.png]]
+![](arraySummary.png)
   
 ## Coding Challenge 4
 ```js
