@@ -79,7 +79,7 @@ const account2 = {
 };
 
 const accounts = [account1, account2];
-
+// in minutes
 // Elements
 const labelWelcome = document.querySelector('.great');
 const labelDate = document.querySelector('.date');
@@ -236,6 +236,69 @@ const formatCurrency = (num, locale, curr) => {// locale and currency
 }
 // Events
 let currAccount;// so that I can Use it for all events
+
+// Fake User
+// currAccount = account1;
+// containerApp.style.opacity = 100;
+// UpdateUI(currAccount);
+
+
+// Update Date of currenct Balance
+// const now = new Date();
+// labelDate.textContent = dateFormat(now, currAccount.locale, true);
+
+// ! Configure Date using internationlization 📅
+// You specify the language
+// and format options e.g. sun, Sunday
+
+//  Create a Timer 🏆🏆🏆🏆🏆🏆
+const sessionTime = 10 * 60;
+let timerInterval;
+const timer = function () {// value in minutes
+  const tick = function () {
+    value = Math.max(value, 0);
+    if (value === 0) {
+      clearInterval(timer);
+      logOut();
+    }
+    const mins = Math.trunc(value / 60);
+    const secs = Math.trunc(value % 60);
+    labelTimer.textContent =
+      `${`${mins}`.padStart(2, 0)}:${`${secs}`.padStart(2, 0)}`;
+    value--;
+  }
+  let value = sessionTime;
+  if (timerInterval) clearInterval(timerInterval);
+  tick();
+  timerInterval = setInterval(tick, 1000);
+
+
+}
+// timer(.05);
+// setTimeout(() => { timer(30) }, 5000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// timer();
 btnLogin.addEventListener('click', function (e) {
   // prevent page reload+ adding enter keydown
   e.preventDefault();
@@ -247,6 +310,8 @@ btnLogin.addEventListener('click', function (e) {
   // if (account && account.pin === inputPin) { My way
   if (account?.pin === inputPin) { // optional chaining way
     currAccount = account;
+
+    timer();
     UpdateUI(account);
     labelWelcome.textContent = `Hello,  ${account.owner}`;
     containerApp.style.opacity = 100;
@@ -261,15 +326,19 @@ btnTransfer.addEventListener('click', function (e) {
   const val = Number(inputTransferAmount.value);
   const acc = accounts.find((acc) => acc.userName === inputTransferTo.value);
   if (acc !== undefined && acc !== currAccount && val > 0 && currAccount.balance >= val) {
-    acc.movements.push(val);
-    currAccount.movements.push(-val);
-    // 
-    currAccount.movementsDates.push(new Date().toISOString());
-    acc.movementsDates.push(new Date().toISOString());
+    timer();
+    setTimeout(() => {
+      acc.movements.push(val);
+      currAccount.movements.push(-val);
+      // 
+      currAccount.movementsDates.push(new Date().toISOString());
+      acc.movementsDates.push(new Date().toISOString());
+      UpdateUI(currAccount);
+    }, 2500)
     // 
     inputTransferAmount.value = inputTransferTo.value = '';
     inputTransferAmount.blur();
-    UpdateUI(currAccount);
+
 
   }
 })
@@ -281,6 +350,7 @@ btnClose.addEventListener('click', function (e) {
   const pin = inputClosePin.value;
   let i = accounts.findIndex((acc) => (acc.userName === userName && acc.pin === Number(pin)));
   // console.log(i);
+  timer();
   if (i != -1) {
     if (currAccount === accounts[i]) logOut(currAccount);
     accounts.splice(i, 1);
@@ -299,9 +369,12 @@ btnLoan.addEventListener('click', function (e) {
   const request = Number(inputLoanAmount.value);
   const yes = currAccount.movements.some((deposite) => deposite > request * .10);
   if (yes && request > 0) {
+    timer();
     currAccount.movements.push(request);
     currAccount.movementsDates.push(new Date().toISOString());
-    UpdateUI(currAccount);
+    setTimeout(() => {
+      UpdateUI(currAccount);
+    }, 2500);
     inputLoanAmount.value = '';
     inputLoanAmount.blur();
   }
