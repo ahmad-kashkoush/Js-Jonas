@@ -80,7 +80,7 @@ const account2 = {
 
 const accounts = [account1, account2];
 
-alert(`login with 🚀🚀:\n [ak, 1111], [jg,2222] `);
+alert(`login with 🚀🚀:\n [ak, 2222], [js, 1111] `);
 // in minutes
 // Elements
 const labelWelcome = document.querySelector('.great');
