@@ -79,6 +79,8 @@ const account2 = {
 };
 
 const accounts = [account1, account2];
+
+alert(`login with 🚀🚀:\n [ak, 1111], [jg,2222] `);
 // in minutes
 // Elements
 const labelWelcome = document.querySelector('.great');
@@ -234,13 +236,6 @@ const formatCurrency = (num, locale, curr) => {// locale and currency
   }
   return new Intl.NumberFormat(locale, options).format(num);
 }
-// Events
-let currAccount;// so that I can Use it for all events
-
-// Fake User
-// currAccount = account1;
-// containerApp.style.opacity = 100;
-// UpdateUI(currAccount);
 
 
 // Update Date of currenct Balance
@@ -275,7 +270,7 @@ const timer = function () {// value in minutes
 
 }
 // timer(.05);
-// setTimeout(() => { timer(30) }, 5000);
+// setTimeout(() => { timer(30) }, 5000); 
 
 
 
@@ -298,7 +293,14 @@ const timer = function () {// value in minutes
 
 
 
-// timer();
+// Events
+let currAccount;// so that I can Use it for all events
+
+// Fake User
+// currAccount = account1;
+// containerApp.style.opacity = 100;
+// UpdateUI(currAccount);
+
 btnLogin.addEventListener('click', function (e) {
   // prevent page reload+ adding enter keydown
   e.preventDefault();
