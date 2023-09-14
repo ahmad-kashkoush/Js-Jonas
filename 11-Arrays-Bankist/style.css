@@ -67,6 +67,15 @@ nav form .login-btn {
   outline: none;
   cursor: pointer;
 }
+@media (max-width: 710px) {
+  nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+  nav .img-holder {
+    order: -1;
+  }
+}
 main {
   width: 992px;
   margin: auto;
@@ -76,6 +85,11 @@ main {
   grid-template-rows: auto repeat(3, 8rem) auto;
   gap: 2rem;
   opacity: 0;
+}
+@media (max-width: 992px) {
+  main {
+    width: 100%;
+  }
 }
 main .balance {
   display: flex;
@@ -98,6 +112,11 @@ main .balance div .balance-value {
   font-weight: 400;
   font-size: 3rem;
 }
+@media (max-width: 659px) {
+  main .balance {
+    flex-direction: column;
+  }
+}
 /* Start Movements */
 .movements {
   background-color: #fff;
@@ -106,6 +125,11 @@ main .balance div .balance-value {
   /* grid-column: 1 / span 2; */
 
   overflow-y: auto;
+}
+@media (max-width: 700px) {
+  .movements {
+    grid-column: 1 / span 5;
+  }
 }
 .movement-row {
   display: flex;
@@ -138,6 +162,25 @@ main .balance div .balance-value {
   margin-left: auto;
   color: var(--heading-color);
 }
+@media (max-width: 772px) {
+  .movement-row {
+    flex-wrap: wrap;
+  }
+  .movement-date {
+    order: 1;
+    margin-left: 0;
+  }
+}
+@media (max-width: 700px) {
+  .movements {
+    grid-column: 1 / span 5;
+  }
+  .movement-date {
+    order: 0;
+    margin-left: 1.2rem;
+  }
+}
+
 /* ? End Movements */
 /* ! Start Summary */
 .summary {
@@ -170,6 +213,11 @@ p.summary-label .summary-value-out {
   border: none;
   cursor: pointer;
 }
+@media (max-width: 700px) {
+  .summary {
+    grid-area: 2/1 / span 1 / span 5;
+  }
+}
 /* ? End Summary */
 /* ! Start Operations */
 .operation {
@@ -178,8 +226,9 @@ p.summary-label .summary-value-out {
   grid-column: 2 / 3;
   /* width: 100%; */
 
-  overflow: hidden;
+  /* overflow: hidden; */
 }
+
 .operation h2 {
   font-size: 1.2rem;
   font-weight: 600;
@@ -191,7 +240,7 @@ p.summary-label .summary-value-out {
   gap: 0.5rem;
 }
 .operation form .form__input {
-  width: 150px;
+  width: 100%;
   background-color: #ffd968;
   border-radius: 7px;
   padding: 0.5rem 1rem;
@@ -244,7 +293,23 @@ p.summary-label .summary-value-out {
 .operation--close .form--close .form__input:focus {
   background-color: #fbb5be;
 }
-
+@media (max-width: 700px) {
+  main {
+    grid-template-rows: auto repeat(6, 8rem) auto;
+  }
+  .operation--transfer {
+    grid-row: 5 / span 1;
+    grid-column: 1 / span 5;
+  }
+  .operation--loan {
+    grid-row: 6 / span 1;
+    grid-column: 1 / span 5;
+  }
+  .operation--close {
+    grid-row: 7 / span 1;
+    grid-column: 1 / span 5;
+  }
+}
 /* ? End Operations */
 /* ! Start Logout Timer */
 .logout-timer {
@@ -259,4 +324,37 @@ p.summary-label .summary-value-out {
 .logout-timer .timer {
   margin-right: 3px;
   font-weight: 500;
+}
+.summary {
+  position: relative;
+}
+.summary .btn--sort {
+  display: block;
+  margin: 10px auto;
+  width: 30%;
+  padding: 10px;
+  background: #fff;
+  border-radius: 23px;
+}
+
+@media (max-width: 700px) {
+  main {
+    display: block;
+  }
+  .summary {
+    margin-top: 3.5rem;
+  }
+  p.summary-label .summary-value {
+    font-size: 0.8rem;
+  }
+
+  .operation {
+    margin-top: 1rem;
+  }
+  .summary .btn--sort {
+    position: absolute;
+    top: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
