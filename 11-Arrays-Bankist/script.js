@@ -111,21 +111,25 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // ////////////////////////
 const isDeposite = mov => mov > 0;
 // All functions first
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
-  const movs = sort ? movements.slice().sort() : movements;
+  const movs = sort ? acc.movements.slice().sort() : acc.movements;
   movs.forEach(function (mov, i) {
     // Clear Movements container
+
+    const dte = displayDate(new Date(acc.movementsDates[i]), acc.locale);
+
+    const movFormated = formatCurrency(mov, acc.locale, acc.currency);
     const type = mov > 0 ? "deposite" : "withdraw";
     const htmlElement = `   <div class="movement-row">
     <div class="movement-type movement-type--${type}">${i + 1} ${type}</div>
-    <div class="movement-date">12/03/2020</div>
-    <div class="movement-value">${mov} €</div>
+    <div class="movement-date">${dte}</div>
+    <div class="movement-value">${movFormated} </div>
   </div>`
     containerMovements.insertAdjacentHTML('afterbegin', htmlElement);
   });
 }
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 // ////////////////////////////
 const createUserNames = function (accounts) {
   accounts.forEach(function (account) {
@@ -173,7 +177,7 @@ const calcSummary = function (acc) {
 // Update User Interface
 const UpdateUI = function (acc) {
   if (acc) {
-    displayMovements(acc.movements);
+    displayMovements(acc);
     calcSummary(acc);
     calcDisplayBalance(acc);
   }
@@ -257,50 +261,7 @@ btnLoan.addEventListener('click', function (e) {
 let toSort = 1;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  displayMovements(currAccount.movements, toSort);
+  displayMovements(currAccount, toSort);
   toSort = 1 - toSort;
 
-})
-
-// filter
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// const deposites = movements.filter(mov=>mov>0);
-// const withdrawl = movements.filter(mov => mov < 0);
-// console.log(deposites, withdrawl);
-// // reduce 
-// const depositesSum = deposites.reduce((acc, cur) => acc + cur);
-// const withdrawlSum = withdrawl.reduce((acc = 0, cur) => acc + cur);
-
-// const MaximumValueInMovements = movements.reduce(((acc, mov) => Math.max(acc, mov)), movements[0]);
-// console.log(depositesSum, withdrawlSum, MaximumValueInMovements);
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
-
-// const currencies = new Map([
-//   ['USD', 'United States dollar'],
-//   ['EUR', 'Euro'],
-//   ['GBP', 'Pound sterling'],
-// ]);
-
-// currencies.forEach(function (cur, key, mp) {
-//   console.log(cur, key);
-// })
-
-// for (const movement of movements) {
-//   console.log(`you ${movement >= 0 ? 'deposited' : 'widthdraw'} ${Math.abs(movement)}$`);
-// }
-// movements.forEach((mov, i, arr) => {
-//   console.log(`movement ${i + 1}: ${mov}`);
-
-// });
-/////////////////////////////////////////////////
-
-
-// splice(beginIndex, numberOfElements); ✅
-// let arr = [1, 2, 3, 4, 5];
-// arr = arr.concat([6, 7, 8, 9, 10]);
-// arr.reverse();
-// console.log(arr);
-// console.log(arr.at(-1));
+});
