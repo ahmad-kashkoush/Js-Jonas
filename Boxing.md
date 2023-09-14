@@ -1,0 +1,4 @@
+- First I've a Primitive Value like 23
+- Then I'll convert it to be object like Number(23)
+- Then I'll call My Methods Number(23).method.method
+- Then I'll return A Primitive Value at the end

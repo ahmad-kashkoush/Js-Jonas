@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "11-Working with array/ReadMe.md",
+                "file": "11-Arrays-Bankist/ReadMe.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "11-Working with array/ReadMe.md",
+                "file": "11-Arrays-Bankist/ReadMe.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "11-Working with array/ReadMe.md",
+                "file": "11-Arrays-Bankist/ReadMe.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11-Working with array/ReadMe.md"
+                "file": "11-Arrays-Bankist/ReadMe.md"
               }
             }
           },
@@ -142,8 +142,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,9 +157,14 @@
   },
   "active": "ebf1f0c358e47c5f",
   "lastOpenFiles": [
-    "arraySummary.png",
-    "11-Working with array/ReadMe.md",
+    "11-Arrays-Bankist/bankist Demo .m4v",
+    "bankist Demo .m4v",
+    "().md",
     "11-Arrays-Bankist/ReadMe.md",
+    "11-Working with array/ReadMe.md",
+    "12-Numbers-Dates-Timers-Bankist/ReadMe.md",
+    "Boxing.md",
+    "arraySummary.png",
     "10-Functions/ReadMe.md",
     "README.md",
     "11-Working with array/mapFilterReduce.png",
