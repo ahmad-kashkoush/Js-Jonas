@@ -141,8 +141,9 @@ createUserNames(accounts);
 // //////////////////
 const calcDisplayBalance = function (account) {
   const balance = account.movements.reduce((acc, cur) => acc + cur);
+  const formattedBalance = formatCurrency(balance, account.locale, account.currency);
   labelBalance.textContent = '';
-  labelBalance.textContent = `${balance} €`;
+  labelBalance.textContent = `${formattedBalance} `;
   account.balance = balance;
 }
 
@@ -158,11 +159,11 @@ const calcSummary = function (acc) {
     .filter(isDeposite)
     .reduce(((acc, mov) => mov + acc), 0);
 
-  labelSumIn.textContent = `${income}€`;
+  labelSumIn.textContent = `${formatCurrency(income, acc.locale, acc.currency)}`;
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce(((acc, mov) => mov + acc), 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${formatCurrency(Math.abs(out), acc.locale, acc.currency)}`;
   const interestRate = acc.interestRate;
   const interest = acc.movements
     .filter(isDeposite)
@@ -170,7 +171,7 @@ const calcSummary = function (acc) {
     .filter((mov) => mov >= 1)
     .reduce(((acc, mov, i, arr) => acc + mov), 0);
 
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${formatCurrency(interest, acc.locale, acc.currency)}`;
 
 }
 
@@ -187,8 +188,52 @@ const logOut = function () {
   labelWelcome.textContent = `Let's Get Started`;
 
 }
+//  Some Date Functions ⭐⭐⭐⭐⭐
+const dateFormat = function (dte, locale, displayTime = false) {
 
+  // const day = `${dte.getDate()}`.padStart(2, '0');
+  // const month = `${dte.getMonth()}`.padStart(2, '0');
+  // const year = `${dte.getFullYear()}`.padStart(2, '0');
+  // const hours = `${dte.getHours()}`.padStart(2, '0');
+  // const minutes = `${dte.getMinutes()}`.padStart(2, '0');
+  // const format = `${[day, month, year].join('/')}`;
+  // if (displayTime) return [format, `${hours}:${minutes}`].join(', ');
 
+  const formatOptions = {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+    // weekday: 'short',
+  }
+  if (displayTime) {
+    formatOptions.hour = 'numeric'
+    formatOptions.minute = 'numeric'
+  }
+  return new Intl.DateTimeFormat(locale, formatOptions).format(dte);
+}
+// Add Function return number of days between to days
+const calcDaysPassed = (date1, date2) => {
+  return Math.round(Math.abs(date1 - date2) / (1000 * 60 * 60 * 24));
+}
+const displayDate = function (date1, locale) {
+  const numberOfDays = calcDaysPassed(Date.now(), date1);
+  if (numberOfDays === 0) return 'Today';
+  else if (numberOfDays === 1) return "Yesterday";
+  else if (numberOfDays < 7) return `${numberOfDays} days ago`;
+  return dateFormat(date1, locale);
+}
+// console.log(calcDaysPassed(
+//   new Date(2023, 10, 5)
+//   , new Date(2023, 10, 9)));
+
+// Format Currencies Function 💸💸💸💸
+const formatCurrency = (num, locale, curr) => {// locale and currency
+  const options = {
+    style: 'currency',
+    currency: curr
+  }
+  return new Intl.NumberFormat(locale, options).format(num);
+}
 // Events
 let currAccount;// so that I can Use it for all events
 btnLogin.addEventListener('click', function (e) {
@@ -218,6 +263,10 @@ btnTransfer.addEventListener('click', function (e) {
   if (acc !== undefined && acc !== currAccount && val > 0 && currAccount.balance >= val) {
     acc.movements.push(val);
     currAccount.movements.push(-val);
+    // 
+    currAccount.movementsDates.push(new Date().toISOString());
+    acc.movementsDates.push(new Date().toISOString());
+    // 
     inputTransferAmount.value = inputTransferTo.value = '';
     inputTransferAmount.blur();
     UpdateUI(currAccount);
@@ -251,6 +300,7 @@ btnLoan.addEventListener('click', function (e) {
   const yes = currAccount.movements.some((deposite) => deposite > request * .10);
   if (yes && request > 0) {
     currAccount.movements.push(request);
+    currAccount.movementsDates.push(new Date().toISOString());
     UpdateUI(currAccount);
     inputLoanAmount.value = '';
     inputLoanAmount.blur();
