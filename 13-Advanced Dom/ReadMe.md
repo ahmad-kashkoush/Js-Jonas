@@ -1,11 +1,14 @@
-- [How Dom Works behind the scenes  ❓](#How%20Dom%20Works%20behind%20the%20scenes%20%20❓)
-- [Selecting, creating, deleting elements ☘️](#Selecting,%20creating,%20deleting%20elements%20☘️)
-	- [](#Selecting,%20creating,%20deleting%20elements%20☘️#Selecting,%20creating,%20deleting%20elements%20☘️#NodeList%20vs%20HtmlCollection|NodeList%20vs%20HtmlCollection)
-- [Style and attributes](#Style%20and%20attributes)
-- [Event Phases](#Event%20Phases)
-- [Event Delegation](#Event%20Delegation)
-- [Dom Traversing](#Dom%20Traversing)
-- [passing Argument to event handler function](#passing%20Argument%20to%20event%20handler%20function)
+- [How Dom Works behind the scenes  ❓](#how-dom-works-behind-the-scenes--)
+- [Selecting, creating, deleting elements ☘️](#selecting-creating-deleting-elements-)
+	- [NodeList vs HtmlCollection](#nodelist-vs-htmlcollection)
+- [Style and attributes](#style-and-attributes)
+- [Event Phases](#event-phases)
+- [Event Delegation](#event-delegation)
+- [Dom Traversing](#dom-traversing)
+- [passing Argument to event handler function](#passing-argument-to-event-handler-function)
+	- [Intersection Observer API](#intersection-observer-api)
+	- [Review dots slide part2 ⚠️⚠️⚠️](#review-dots-slide-part2-)
+
 
 ### How Dom Works behind the scenes  ❓
 1. First We have a dom ==tree==
@@ -14,7 +17,7 @@
 	1. They are of other types using ==polymorphism==
 4. ![dom tree OOP](dom%20tree%20OOP.md)
 5. Node itself inherted ==EventTarget== class
-![[../ImageBank/Pasted image 20230918160820.png]]
+![../ImageBank/Pasted image 20230918160820.png](../ImageBank/Pasted%20image%2020230918160820.png)
 
 
 ### Selecting, creating, deleting elements ☘️
@@ -141,6 +144,6 @@ console.log(logo.dataset.version);// data-version
 #### Intersection Observer API
 - **Definition**: It is when viewport intersets with a target Dom Element 
 - It is called if threshold of intersection is going in range or getting out of range 
-![[../ImageBank/Intersection Observer api.png]]
+![../ImageBank/Intersection Observer api.png](../ImageBank/Intersection%20Observer%20api.png)
 
 #### Review dots slide part2 ⚠️⚠️⚠️
