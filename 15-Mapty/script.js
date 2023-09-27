@@ -30,20 +30,46 @@ if (navigator.geolocation) {
             .openPopup();
         // to identify the click coords in the map
         map.on('click', function (mapEvent) {
-            const { lat, lng } = mapEvent.latlng;
-            // console.log(lat, lng);
-            const markerOptions = {
-                autoClose: false,
-                maxWidth: 250,
-                maxHeight: 100,
-                closeOnClick: false,
-                className: 'running-popup'
+            // My code to implement the form  features🏆
+            form.classList.remove('hidden');
 
-            }
-            L
-                .marker([lat, lng]).addTo(map)
-                .bindPopup(L.popup(markerOptions)).setPopupContent('Hellow World')
-                .openPopup();
+            document.addEventListener('keydown', function (e) {
+                if (e.key != 'Enter') return;
+                e.preventDefault();
+                const inputTypeValue = inputType.value.toLowerCase();
+                const inputDistanceValue = inputDistance.value;
+                const inputDurationValue = inputDistance.value;
+                console.log(inputTypeValue, inputDistanceValue, inputDurationValue);
+
+                const { lat, lng } = mapEvent.latlng;
+                // console.log(lat, lng);
+                let className = 'cycling-popup';
+                const dateOptions = {
+                    month: "long",
+                    day: "numeric",
+                }
+                const today = new Intl.DateTimeFormat("en-US", dateOptions).format(Date.now())
+                let popUpContent = `🚴‍♀️ Cycling on ${today}`;
+                if (inputTypeValue == 'running') {
+                    className = 'running-popup';
+                    popUpContent = `🏃‍♂️ Running on ${today}`;
+                }
+                const markerOptions = {
+                    autoClose: false,
+                    maxWidth: 250,
+                    maxHeight: 100,
+                    closeOnClick: false,
+                    className: className
+
+                }
+                L
+                    .marker([lat, lng]).addTo(map)
+                    .bindPopup(L.popup(markerOptions)).setPopupContent(popUpContent)
+                    .openPopup();
+
+            })
+
+
 
         });
 
