@@ -14,10 +14,29 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // Geolocation
 let map;
 let mapEvent;
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
+class App {
+    constructor() {
+        this._getPosition();
+    }
+    _getPosition() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    this._loadMap(position);
+                    // My code to implement the form  features🏆
+                    // });
+
+                },
+                function () {
+                    console.log("The second funciton will be used if the first didn't apply");
+                }
+            );
+        }
+    }
 
 
+
+    _loadMap(position) {
         const coordinates = [position.coords.latitude, position.coords.longitude];
         // Getting the map From leaflet
         map = L.map('map').setView(coordinates, 13);
@@ -32,24 +51,29 @@ if (navigator.geolocation) {
         // to identify the click coords in the map
         map.on('click', function (e) {
             mapEvent = e;
-            // My code to implement the form  features🏆
-            form.classList.remove('hidden');
-            inputDistance.focus();
-
-
-
-
-
-
-            // });
-
-        },
-            function () {
-                console.log("The second funciton will be used if the first didn't apply");
+        });
+    }
+    _showForm() {
+        form.classList.remove('hidden');
+        inputDistance.focus();
+    }
+    _changeFields() {
+        // change field based on type
+        //  he has done it using toggeling
+        // But I think it's better to keep it as generic as possible
+        inputType.addEventListener('change', function (e) {
+            if (inputType.value.toLowerCase() == 'cycling') {
+                inputElevation.closest('.form__row').classList.remove('form__row--hidden');
+                inputCadence.closest('.form__row').classList.add('form__row--hidden');
+            } else if (inputType.value.toLowerCase() == 'running') {
+                inputElevation.closest('.form__row').classList.add('form__row--hidden');
+                inputCadence.closest('.form__row').classList.remove('form__row--hidden');
             }
-        )
-    });
+        });
+
+    }
 }
+
 //  What I've Done is
 // 1. I've written spaggettie code by 
 // 2. I should've writen marker and map code at submit from event
@@ -89,12 +113,3 @@ form.addEventListener('submit', function (e) {
 
 });
 
-inputType.addEventListener('change', function (e) {
-    if (inputType.value.toLowerCase() == 'cycling') {
-        inputElevation.closest('.form__row').classList.remove('form__row--hidden');
-        inputCadence.closest('.form__row').classList.add('form__row--hidden');
-    } else if (inputType.value.toLowerCase() == 'running') {
-        inputElevation.closest('.form__row').classList.add('form__row--hidden');
-        inputCadence.closest('.form__row').classList.remove('form__row--hidden');
-    }
-});
