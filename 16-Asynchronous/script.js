@@ -1,23 +1,72 @@
 // // // https://restcountries.com/v3.1/name/{name}
 'use strict';
-// building promises
-const lotteryTicket = new Promise(function (resolve, reject) {
-  // set timer so that promise code would be asynchronous code
-  setTimeout(function () {
 
-    let num = Math.random();
-    if (num >= .5) {
-      // winning a lottery
-      resolve(`you've won 🏆`)
-    } else {
-      reject(new Error(`you've failed 😢 `))
-    }
-  }, 1000);
+// Promisify geolocation
+const dateFormat = function (date) {
+  const dte = new Date(date);
+  return `${dte.getDate()}, ${dte.getMonth() + 1}, ${dte.getFullYear()}`
+}
+const checkDate = function (a, b) {
+  const aa = dateFormat(a);
+  const bb = dateFormat(b);
+  return aa === bb;
+}
+const getJson = function (url, err = "something went wrong") {
+  return fetch(url)
+    .then((data) => {
+      console.log(data);
+      if (data.status === 403) {
+        throw (`${err},you're loading too fast (${data.status})`);
+      }
+      if (data.status === 404) {
+        throw (`${err}, not found(fuck you)`);
+      }
+      return data.json()
+    });
+}
+const getCurrentPosition = function () {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  })
+}
+getCurrentPosition().then(loc => {
+  console.log(loc);
+  const date = new Date();
+  const curDate = `${date.getFullYear()}/${date.getMonth() + 1}`;
+  const [lat, lng] = [loc.coords.latitude, loc.coords.longitude];
 
-})
-lotteryTicket
-  .then((res) => (console.log(res)))
-  .catch((err) => console.error(err));
+
+  return getJson(`http://api.aladhan.com/v1/calendar/${curDate}?latitude=${lat}&longitude=${lng}&method=5`)
+    .then(response => {
+      response.data.forEach(ele => {
+        if (checkDate(ele.date.readable, new Date())) {
+          console.log(ele.timings);
+        }
+      });
+    })
+}
+)
+
+
+// http://api.aladhan.com/v1/calendar/2017/4?latitude=51.508515&longitude=-0.1254872&method=2http://api.aladhan.com/v1/calendar/2019?latitude=51.508515&longitude=-0.1254872&method=2
+// // building promises
+// const lotteryTicket = new Promise(function (resolve, reject) {
+//   // set timer so that promise code would be asynchronous code
+//   setTimeout(function () {
+
+//     let num = Math.random();
+//     if (num >= .5) {
+//       // winning a lottery
+//       resolve(`you've won 🏆`)
+//     } else {
+//       reject(new Error(`you've failed 😢 `))
+//     }
+//   }, 1000);
+
+// })
+// lotteryTicket
+//   .then((res) => (console.log(res)))
+//   .catch((err) => console.error(err));
 
 
 // // Coding Challenge 1
