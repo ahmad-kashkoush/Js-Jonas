@@ -1,4 +1,5 @@
-
+// by importing this module:
+// you get an prayer times object for your location
 const dateFormat = function (date) {
     const dte = new Date(date);
     return `${dte.getDate()}, ${dte.getMonth() + 1}, ${dte.getFullYear()}`
@@ -20,18 +21,6 @@ const getJson = async function (url, err = "something went wrong") {
         throw (er);
     }
 
-    // return new Promise(function (resolve, reject) {
-    //     fetch(url)
-    //         .then((data) => {
-    //             if (data.status === 403) {
-    //                 reject(`${err},you're loading too fast (${data.status})`);
-    //             }
-    //             if (data.status === 404) {
-    //                 reject(`${err}, not found(fuck you)`);
-    //             }
-    //             resolve(data.json());
-    //         });
-    // })
 }
 
 
@@ -57,32 +46,10 @@ const getAzan = async function () {
         })
         if (!timings)
             throw ("not valid link");
-        console.log(timings);
+
+        return timings;
     } catch (err) {
         console.log(err);
     }
-    // getCurrentPosition()
-    //     .then((loc) => {
-    //         // get time and place
-    //         const date = new Date();
-    //         const curDate = `${date.getFullYear()}/${date.getMonth() + 1}`;
-    //         const { latitude: lat, longitude: lng } = loc.coords;
-
-
-    //         return getJson(`http://api.aladhan.com/v1/calendar/${curDate}?latitude=${lat}&longitude=${lng}&method=5`)
-    //             .then(response => {
-    //                 let [{ timings }] =
-    //                     response.data.filter(ele => {
-    //                         if (checkDate(ele.date.readable, new Date()))
-    //                             return ele;
-    //                     })
-    //                 if (!timings)
-    //                     throw ("not valid link");
-    //                 return timings;
-
-    //             })
-    //             .then(ele => console.log(ele))
-    //             .catch(err => console.log(err))
-    //     });
 }
-getAzan();
+export const prayerTimes = await getAzan();
