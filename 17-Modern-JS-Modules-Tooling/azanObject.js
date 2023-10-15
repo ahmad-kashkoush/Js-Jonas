@@ -62,7 +62,11 @@ const azanObjectAPI = (function () {
         getAzan
     }
 })();
-export { azanObjectAPI }
+let prayerTimes = (async function () {
+    return await azanObjectAPI.getAzan();
+
+})();
+export { prayerTimes }
 
 // using await here will block everything after it untill the promise is settled
 // export const prayerTimes = await getAzan();
